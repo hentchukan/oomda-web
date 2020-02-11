@@ -1,0 +1,10 @@
+<mat-spinner *ngIf="agents.length === 0"></mat-spinner>
+<mat-card *ngFor="let agent of agents" style="margin-top:10px;">
+  <mat-card-header>
+    <mat-card-title>{{agent.name}}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    {{agent.status | labelit}}
+  </mat-card-content>
+</mat-card>
+
