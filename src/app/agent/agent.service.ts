@@ -10,7 +10,7 @@ import { retry, catchError } from 'rxjs/operators';
 })
 export class AgentService {
 
-  private API_REST_SERVER = /*'https://oomda.herokuapp.com/'*/ 'http://localhost:8080/';
+  private API_REST_SERVER = 'https://oomda.herokuapp.com/' /*'http://localhost:8080/'*/;
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
