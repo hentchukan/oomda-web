@@ -1,10 +1,88 @@
-<mat-spinner *ngIf="agents.length === 0"></mat-spinner>
-<mat-card *ngFor="let agent of agents" style="margin-top:10px;">
-  <mat-card-header>
-    <mat-card-title>{{agent.name}}</mat-card-title>
-  </mat-card-header>
-  <mat-card-content>
-    {{agent.status | labelit}}
-  </mat-card-content>
-</mat-card>
+<div class="component">
+  <div class="init">
+    <mat-spinner *ngIf="agents.length === 0"></mat-spinner>
+  </div>
 
+<table>
+  <tr >
+    <td class="alignment list">
+      <div>
+
+        <form [formGroup]="searchForm" (submit)="filter()" >
+          <div>
+            <mat-form-field style="width: 83%;">
+              <mat-label>Agent name</mat-label>
+              <input matInput placeholder="Ex. fferchichi" formControlName="key">
+            </mat-form-field>
+            <button type="submit" >
+              <mat-icon >search</mat-icon>
+            </button>
+          </div>
+        </form>
+
+        <mat-card *ngFor="let agent of agents" style="margin-top:10px;" >
+          <mat-card-header (click)="details(agent)">
+            <mat-card-title>{{agent.name}}</mat-card-title>
+          </mat-card-header>
+          <mat-card-content style="width: 100%;">
+            <table style="width: inherit;">
+              <tr>
+                <td>
+                  {{agent.status | labelit}}
+                </td>
+                <td>
+                  <div style="text-align: right;">
+                    <button mat-button (click)="delete(agent)"><mat-icon >delete</mat-icon></button>
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </td>
+
+    <td class="alignment form">
+      <mat-expansion-panel expanded>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Edit Agent
+          </mat-panel-title>
+          <mat-panel-description>
+            Add a new Agent or Update one.
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <form [formGroup]="agentForm" (submit)="save()">
+          <table class="form-group" style="width: 100%; ">
+            <div class="row" >
+              <mat-form-field style="width: 100%; ">
+                <mat-label>Agent name</mat-label>
+                <input matInput placeholder="Ex. fferchichi" formControlName="name">
+              </mat-form-field>
+            </div>
+
+            <div class="row">
+
+                <mat-label>Status  </mat-label>
+                <select formControlName="status">
+                  <option *ngFor="let status of statusList" [ngValue]="status">
+                    {{status | labelit}}
+                  </option>
+                </select>
+
+            </div>
+
+            <div class="row" style="text-align: right;">
+              <button class="btn btn-default" style="margin-right: 2%;" (click)="reset()">Reset</button>
+              <input type="submit" class="btn btn-default" value="Save"/>
+            </div>
+
+          </table>
+        </form>
+
+      </mat-expansion-panel>
+    </td>
+  </tr>
+</table>
+</div>

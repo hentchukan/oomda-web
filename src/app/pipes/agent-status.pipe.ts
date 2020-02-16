@@ -6,7 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class AgentStatusPipe implements PipeTransform {
 
   transform(status: string): string {
-    return (status === 'AVAILABLE') ? 'Available' : 'Not Available';
+    return (status === 'A') ? 'Available' : 'Not Available';
   }
 
 }

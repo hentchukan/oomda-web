@@ -11,9 +11,14 @@ import { MatToolbarModule,
   MatIconModule,
   MatCardModule,
   MatButtonModule,
-  MatProgressSpinnerModule } from '@angular/material';
+  MatProgressSpinnerModule,
+  MatInputModule,
+  MatFormFieldModule,
+  MatExpansionModule
+  } from '@angular/material';
 import { AgentComponent } from './agent/agent.component';
 import { AgentStatusPipe } from './pipes/agent-status.pipe';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -32,7 +37,14 @@ import { AgentStatusPipe } from './pipes/agent-status.pipe';
     MatCardModule,
     MatIconModule,
     MatProgressSpinnerModule,
-    MatButtonModule
+    MatButtonModule,
+    MatInputModule,
+    MatFormFieldModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatExpansionModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

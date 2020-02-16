@@ -1,0 +1,27 @@
+.component {
+  width: inherit;
+  height: inherit;
+  padding: 3%;
+}
+.init {
+  vertical-align: middle;
+  align-content: center;
+  width: inherit;
+  height: inherit;
+}
+
+.alignment {
+  vertical-align: top;
+}
+
+.list {
+  width: 400px;
+}
+
+.form {
+  width: 600px;
+  padding-left: 10%;
+}
+.mat-form-field + .mat-form-field {
+  margin-left: 8px;
+}
