@@ -19,14 +19,12 @@ export class AgentComponent implements OnInit {
   agents = [];
   statusList = ['A', 'N'];
   agentForm = new FormGroup ({
-    name: new FormControl(),
+    name: new FormControl({value: '',  disabled: false}),
     status: new FormControl(this.statusList[0]),
   });
   searchForm = new FormGroup(
     {key: new FormControl()}
   );
-
-  update = true;
 
   constructor(private agentService: AgentService) { }
 
@@ -43,7 +41,8 @@ export class AgentComponent implements OnInit {
   }
 
   save(): void {
-    this.agentService.save(new AgentData(this.agentForm.value.name, this.agentForm.value.status), this.update).subscribe((data) => {
+    this.agentService.save(new AgentData(this.agentForm.controls.name.value, this.agentForm.controls.status.value),
+     this.agentForm.controls.name.disabled).subscribe((data) => {
       this.reset();
       this.getAll();
     }
@@ -72,14 +71,13 @@ export class AgentComponent implements OnInit {
 
   details(agent: AgentData) {
     this.agentForm.setValue(agent);
-    this.update = true;
+    this.agentForm.controls.name.disable({onlySelf: true});
   }
 
   reset() {
     this.agentForm = new FormGroup({
-      name: new FormControl(),
+      name: new FormControl({value: '', disabled: false}),
       status: new FormControl(this.statusList[0])
     });
-    this.update = false;
   }
 }

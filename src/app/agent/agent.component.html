@@ -53,7 +53,7 @@
           </mat-panel-description>
         </mat-expansion-panel-header>
 
-        <form [formGroup]="agentForm" (submit)="save()">
+        <form [formGroup]="agentForm" >
           <table class="form-group" style="width: 100%; ">
             <div class="row" >
               <mat-form-field style="width: 100%; ">
@@ -75,7 +75,7 @@
 
             <div class="row" style="text-align: right;">
               <button class="btn btn-default" style="margin-right: 2%;" (click)="reset()">Reset</button>
-              <input type="submit" class="btn btn-default" value="Save"/>
+              <button class="btn btn-default" style="margin-right: 2%;" (click)="save()">Save</button>
             </div>
 
           </table>

@@ -10,7 +10,7 @@ import { retry, catchError } from 'rxjs/operators';
 })
 export class AgentService {
 
-  private API_REST_SERVER = 'https://oomda.herokuapp.com/' /*'http://localhost:8080/'*/;
+  private API_REST_SERVER = /*'https://oomda.herokuapp.com/'*/ 'http://localhost:8080/';
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
@@ -30,10 +30,10 @@ export class AgentService {
   public save(data: AgentData, update: boolean): Observable<AgentData> {
     if (update) {
       return this.httpClient.put<AgentData>(this.API_REST_SERVER + '/agents/' + data.name, JSON.stringify(data), this.httpOptions)
-      .pipe(retry(3), catchError(this.handleError));
+      .pipe( catchError(this.handleError));
     } else {
       return this.httpClient.post<AgentData>(this.API_REST_SERVER + 'agents', JSON.stringify(data), this.httpOptions)
-      .pipe(retry(3), catchError(this.handleError));
+      .pipe( catchError(this.handleError));
     }
   }
 
