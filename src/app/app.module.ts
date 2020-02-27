@@ -22,6 +22,8 @@ import { AgentComponent } from './agent/agent.component';
 import { AgentStatusPipe } from './pipes/agent-status.pipe';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TechnologyComponent } from './technology/technology.component';
+import { CompetenceItemComponent } from './competence-item/competence-item.component';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { TechnologyComponent } from './technology/technology.component';
     AboutComponent,
     AgentComponent,
     AgentStatusPipe,
-    TechnologyComponent
+    TechnologyComponent,
+    CompetenceItemComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,

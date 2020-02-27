@@ -14,12 +14,24 @@
     </table>
   </mat-form-field>
 
+  <div class="msg-div">
+    <mat-hint [ngClass]="(color)?'success':'error'">{{message}}</mat-hint>
+  </div>
+
   <table mat-table [dataSource]="dataSource">
 
-    <!-- Position Column -->
+    <!-- Name Column -->
     <ng-container matColumnDef="Name">
       <th mat-header-cell *matHeaderCellDef> Name </th>
       <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <!-- Delete Column -->
+    <ng-container matColumnDef="Delete">
+      <th mat-header-cell *matHeaderCellDef>  </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-button (click)="delete(element)"><mat-icon >delete</mat-icon></button>
+      </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

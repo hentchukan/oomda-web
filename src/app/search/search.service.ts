@@ -1,18 +1,18 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { TechnologyData, TechnologyCollectionData } from './technology.model';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import {  throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
+import { AgentData, AgentCollectionData } from '../agent/agent.model';
+import { TechnologyCollectionData } from '../technology/technology.model';
 import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
-export class TechnologyService {
+export class SearchService {
 
-  private API_REST_SERVER = environment.baseUrl;
-
+  private API_REST_SERVER = environment.baseUrl;;
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
@@ -21,18 +21,9 @@ export class TechnologyService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public getTechnologies(): Observable<TechnologyCollectionData> {
-    return this.httpClient.get<TechnologyCollectionData>(this.API_REST_SERVER + '/technologies')
+  public findByTechnologies(body: TechnologyCollectionData): Observable<AgentCollectionData> {
+    return this.httpClient.post<AgentCollectionData>(this.API_REST_SERVER + '/agents/search', body)
     .pipe(retry(3), catchError(this.handleError));
-  }
-
-  public save(data: TechnologyData): Observable<TechnologyData> {
-    return this.httpClient.post<TechnologyData>(this.API_REST_SERVER + 'technologies', JSON.stringify(data), this.httpOptions)
-    .pipe( catchError(this.handleError));
-  }
-
-  public deleteTechnology(data: TechnologyData) {
-    return this.httpClient.delete(this.API_REST_SERVER + 'technologies/' + data.name, this.httpOptions);
   }
 
   handleError(error: HttpErrorResponse) {

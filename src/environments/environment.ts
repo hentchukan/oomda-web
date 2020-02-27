@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  hmr: true
+  hmr: true,
+  baseUrl: 'http://localhost:8080/'
 };
 
 /*

@@ -1,5 +1,5 @@
 .component {
-  width: inherit;
+  width: max-content;
   height: inherit;
   padding: 3%;
 }
@@ -15,13 +15,26 @@
 }
 
 .list {
-  width: 400px;
+  white-space: nowrap;
 }
 
 .form {
-  width: 600px;
+  width: 800px;
   padding-left: 10%;
 }
-.mat-form-field + .mat-form-field {
-  margin-left: 8px;
+
+.mat-cell {
+  padding: 8px 8px 8px 0;
+}
+
+.agent-list {
+  column-gap: 50px;
+}
+
+.onError {
+  color: red;
+}
+
+.noError {
+  color: gray;
 }

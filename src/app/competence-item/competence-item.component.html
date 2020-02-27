@@ -1,0 +1,25 @@
+<div class="item">
+  <table >
+    <tr>
+      <td>
+        <select [(ngModel)]="this.competence.technology" [compareWith]="compareFn">
+          <option *ngFor="let techno of technologies" [ngValue]="techno">
+            {{techno.name}}
+          </option>
+        </select>
+      </td>
+
+      <td>
+        <select [(ngModel)]="this.competence.level">
+          <option [value]="1">Beginner</option>
+          <option [value]="2">Confirmed</option>
+          <option [value]="3">Expert</option>
+        </select>
+      </td>
+
+      <td>
+        <input [value]="this.competence.version" />
+      </td>
+    </tr>
+  </table>
+</div>

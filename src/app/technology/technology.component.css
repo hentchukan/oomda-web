@@ -13,3 +13,22 @@
   margin-left: 25%;
   margin-top: 2%;
 }
+
+.success {
+  color: green;
+  font-size: medium;
+  font-weight: bold;
+  margin-right: 2%;
+}
+
+.error {
+  color: red;
+  font-size: medium;
+  font-weight: bold;
+  margin-right: 2%;
+}
+
+.msg-div {
+  width: 100%;
+  text-align: right;
+}
