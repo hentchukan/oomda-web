@@ -60,8 +60,7 @@ export class AgentComponent implements OnInit {
     }
 
     this.competences.data.forEach((c) => {
-      c.agent = this.agentForm.value;
-      c.agent.competences = null;
+      c.agent = null;
     });
     this.agentService.save(new AgentData(this.agentForm.controls.name.value,
         this.agentForm.controls.status.value, this.agentForm.controls.id.value, this.competences.data),
@@ -108,6 +107,7 @@ export class AgentComponent implements OnInit {
   updateCompetences(competences: CompetenceData[]) {
     this.competences.data = competences;
     this.competences._updateChangeSubscription();
+    this.competences.paginator = this.skillPaginator;
   }
 
   addSkill() {
@@ -127,6 +127,11 @@ export class AgentComponent implements OnInit {
       id: new FormControl()
     });
     this.updateCompetences([]);
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.agents.filter = filterValue.trim().toLowerCase();
   }
 
   public totalValidator() {

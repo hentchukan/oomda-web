@@ -17,15 +17,12 @@
         </mat-expansion-panel-header>
 
         <div>
-          <form [formGroup]="searchForm" (submit)="filter()" >
+          <form [formGroup]="searchForm" >
             <div>
               <mat-form-field style="width: 83%;">
                 <mat-label>Agent name</mat-label>
-                <input matInput placeholder="Ex. fferchichi" formControlName="key">
+                <input matInput (keyup)="applyFilter($event)" placeholder="Ex. fferchichi" formControlName="key">
               </mat-form-field>
-              <button type="submit" >
-                <mat-icon >search</mat-icon>
-              </button>
             </div>
           </form>
 
